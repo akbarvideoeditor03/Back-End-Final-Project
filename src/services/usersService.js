@@ -33,7 +33,7 @@ class UserService {
         const usersId = await User.findByPk(id, queryParams)
 
         if (!usersId) {
-            return response.status(404).json({ message: 'Data tidak ditemukan' })
+            return response.status(404).json({ message: 'Data not found' })
         }
         return { data: usersId }
     }
