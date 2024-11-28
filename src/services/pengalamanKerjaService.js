@@ -18,7 +18,7 @@ class PengalamanKerjas {
                 page: parseInt(page),
                 totalPage: totalPage !== Infinity ? totalPage : parseInt(page),
                 totalPage: countPengalamanKerja,
-                totalDataOnPage: pengalamanKerja.lenght
+                totalDataOnPage: pengalamanKerja.length
             },
         }
     }
