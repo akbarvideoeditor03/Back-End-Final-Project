@@ -19,8 +19,5 @@ router.use('/pelatihan', pelatihan);
 const keahlian = require('./api/routes/keahlian.route');
 router.use('/keahlian', keahlian);
 
-const komentar = require('./api/routes/komentar.route');
-router.use('/komentar', komentar);
-
 
 module.exports = router;

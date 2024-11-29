@@ -45,6 +45,7 @@ exports.createUsers = async (req, res, next) => {
             req.body.nama,
             req.body.no_telp,
             req.body.alamat,
+            req.body.tentang,
             req.body.foto_profil,
             req.body.email,
             req.body.password
@@ -69,6 +70,7 @@ exports.updateUsers = async (req, res, next) => {
             req.body.nama,
             req.body.no_telp,
             req.body.alamat,
+            req.body.tentang,
             req.body.foto_profil,
             req.body.email,
         );

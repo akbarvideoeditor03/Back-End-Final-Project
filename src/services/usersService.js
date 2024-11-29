@@ -28,7 +28,7 @@ class UserService {
 
     async getUsersById(id) {
         const queryParams = {
-            attributes: { exclude: ['foto_profil', 'password', 'role'] }
+            attributes: { exclude: ['password', 'role'] }
         }
         const usersId = await User.findByPk(id, queryParams)
 
@@ -38,21 +38,21 @@ class UserService {
         return { data: usersId }
     }
 
-    async createUsers(nama, no_telp, alamat, foto_profil, email, password) {
+    async createUsers(nama, no_telp, alamat, tentang, foto_profil, email, password) {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const users = await User.create({nama, no_telp, alamat, foto_profil, email, password: hashedPassword})
+        const users = await User.create({nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword})
         return users
     }
 
-    async updateUsers(id, nama, no_telp, alamat, foto_profil, email){
+    async updateUsers(id, nama, no_telp, alamat, tentang, foto_profil, email){
         const usersId = await User.findByPk(id)
         if (!usersId) {
             return response.status(404).json({ message: 'Data tidak ditemukan' })
         }
         return await User.update(
-            {nama, no_telp, alamat, foto_profil, email},
+            {nama, no_telp, alamat, tentang, foto_profil, email},
             {
                 where: {
                     id,
