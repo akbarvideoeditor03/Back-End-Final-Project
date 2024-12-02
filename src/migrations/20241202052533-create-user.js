@@ -2,17 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Komentars', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_user: {
-        type: Sequelize.INTEGER
+      nama: {
+        type: Sequelize.STRING
       },
-      isi: {
+      no_telp: {
+        type: Sequelize.STRING
+      },
+      alamat: {
+        type: Sequelize.STRING
+      },
+      tentang: {
+        type: Sequelize.STRING
+      },
+      foto_profil: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      role: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -26,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Komentars');
+    await queryInterface.dropTable('Users');
   }
 };
