@@ -1,23 +1,18 @@
 const router = require('express').Router();
-module.exports = router;
-
 const usersRoute = require('./api/routes/users.route');
-router.use('/user', usersRoute);
-
 const pengalamanKerjaRoute = require('./api/routes/pengalamanKerja.route');
-router.use('/pengalamankerja', pengalamanKerjaRoute);
-
 const prestasiKerjaRoute = require('./api/routes/prestasiKerja.route');
-router.use('/prestasikerja', prestasiKerjaRoute);
-
 const pendidikanTerakhir = require('./api/routes/pendidikanTerakhir.route');
-router.use('/pendidikanterakhir', pendidikanTerakhir);
-
 const pelatihan = require('./api/routes/pelatihan.route');
-router.use('/pelatihan', pelatihan);
-
 const keahlian = require('./api/routes/keahlian.route');
-router.use('/keahlian', keahlian);
+const authRoute = require('./api/routes/auth.route');
 
+router.use('/user', usersRoute);
+router.use('/user', authRoute);
+router.use('/pengalamankerja', pengalamanKerjaRoute);
+router.use('/prestasikerja', prestasiKerjaRoute);
+router.use('/pendidikanterakhir', pendidikanTerakhir);
+router.use('/pelatihan', pelatihan);
+router.use('/keahlian', keahlian);
 
 module.exports = router;

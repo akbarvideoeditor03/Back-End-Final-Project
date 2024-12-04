@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const keahlian = require('../controller/keahlian.controller');
 
 router.get('/', keahlian.getKeahlian);

@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const { User } = require('../models');
 const { response } = require('express');
 
@@ -39,8 +39,8 @@ class UserService {
     }
 
     async createUsers(nama, no_telp, alamat, tentang, foto_profil, email, password) {
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        // const saltRounds = 10;
+        // const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const users = await User.create({nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword})
         return users
