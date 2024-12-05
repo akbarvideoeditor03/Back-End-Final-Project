@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       tahun_selesai: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

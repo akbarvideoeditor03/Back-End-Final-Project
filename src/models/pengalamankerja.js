@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     jabatan: DataTypes.STRING,
     deskripsi: DataTypes.STRING,
     tahun_mulai: DataTypes.DATE,
-    tahun_selesai: DataTypes.DATE
+    tahun_selesai: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'PengalamanKerja',

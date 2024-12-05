@@ -12,7 +12,7 @@ exports.create = Joi.object().keys({
         return value;
     }),
     tahun_mulai: Joi.date().required(),
-    tahun_selesai: Joi.date().required(),
+    tahun_selesai: Joi.string().required(),
 })
 
 exports.update = Joi.object().keys({
@@ -26,5 +26,5 @@ exports.update = Joi.object().keys({
         return value;
     }),
     tahun_mulai: Joi.date(),
-    tahun_selesai: Joi.date(),
+    tahun_selesai: Joi.string(),
 })

@@ -5,12 +5,12 @@ exports.create = Joi.object().keys({
     institusi: Joi.string().required(),
     jurusan: Joi.string().required(),
     tahun_mulai: Joi.date().required(),
-    tahun_selesai: Joi.date().required(),
+    tahun_selesai: Joi.string().required(),
 })
 
 exports.update = Joi.object().keys({
     institusi: Joi.string(),
     jurusan: Joi.string(),
     tahun_mulai: Joi.date(),
-    tahun_selesai: Joi.date()
+    tahun_selesai: Joi.string()
 })

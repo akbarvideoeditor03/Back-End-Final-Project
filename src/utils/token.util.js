@@ -29,6 +29,7 @@ const encode = async (user) => {
         expiresIn: '1h',
     });
     return {
+        role: user.id,
         role: user.role,
         token: token,
     };

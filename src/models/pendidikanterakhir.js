@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     institusi: DataTypes.STRING,
     jurusan: DataTypes.STRING,
     tahun_mulai: DataTypes.DATE,
-    tahun_selesai: DataTypes.DATE
+    tahun_selesai: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'PendidikanTerakhir',

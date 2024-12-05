@@ -76,6 +76,7 @@ const login = async (req, res) => {
 
         const { token } = await tokenUtils.encode(user);
         return res.status(200).json({
+            id:user.id,
             role: user.role,
             token: token,
         });

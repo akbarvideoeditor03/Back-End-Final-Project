@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     id_user: DataTypes.INTEGER,
     pelatihan: DataTypes.STRING,
     tahun_mulai: DataTypes.DATE,
-    tahun_selesai: DataTypes.DATE
+    tahun_selesai: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Pelatihan',
