@@ -29,7 +29,7 @@ exports.getPendidikanTerakhirId = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Get user detail success',
+            message: 'Get pendidikan terakhir success',
             data,
         })
     } catch (error) {
@@ -65,6 +65,7 @@ exports.updatePendidikanTerakhir = async (req, res, next) => {
         const pendidikanTerakhir = new PendidikanTerakhirs();
         await pendidikanTerakhir.updatePendidikanTerakhir(
             req.params.id,
+            req.params.id_user,
             req.body.institusi,
             req.body.jurusan,
             req.body.tahun_mulai,
@@ -83,7 +84,7 @@ exports.updatePendidikanTerakhir = async (req, res, next) => {
 exports.deletePendidikanTerakhir = async (req, res, next) => {
     try {
         const pendidikanTerakhir = new PendidikanTerakhirs();
-        await pendidikanTerakhir.deletePendidikanTerakhir(req.params.id);
+        await pendidikanTerakhir.deletePendidikanTerakhir(req.params.id, req.params.id_user,);
 
         return res.status(200).json({
             success: true,

@@ -28,7 +28,7 @@ class PrestasiKerjas {
         return prestasiKerja;
     }
 
-    async updatePrestasiKerja(id, prestasi, tahun) {
+    async updatePrestasiKerja(id, id_pengalaman_kerja, prestasi, tahun) {
         const prestasiKerja = await PrestasiKerja.findByPk(id)
         if (!prestasiKerja) {
             return response.status(404).json({ message: 'Data not found' })
@@ -37,6 +37,9 @@ class PrestasiKerjas {
         return await PrestasiKerja.update(
             { prestasi, tahun },
             {
+                select: {
+                    id_pengalaman_kerja,
+                },
                 where: {
                     id,
                 },

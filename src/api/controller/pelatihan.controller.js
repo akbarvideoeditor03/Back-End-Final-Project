@@ -25,7 +25,7 @@ exports.getPelatihanId = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Get user detail success',
+            message: 'Get pelatihan success',
             data,
         })
     } catch (error) {
@@ -60,6 +60,7 @@ exports.updatePelatihan = async (req, res, next) => {
         const pelatihan = new Pelatihans();
         await pelatihan.updatePelatihan(
             req.params.id,
+            req.params.id_user,
             req.body.pelatihan,
             req.body.tahun_mulai,
             req.body.tahun_selesai
@@ -77,7 +78,7 @@ exports.updatePelatihan = async (req, res, next) => {
 exports.deletePelatihan = async (req, res, next) => {
     try {
         const pelatihan = new Pelatihans();
-        await pelatihan.deletePelatihan(req.params.id);
+        await pelatihan.deletePelatihan(req.params.id, req.params.id_user,);
 
         return res.status(200).json({
             success: true,

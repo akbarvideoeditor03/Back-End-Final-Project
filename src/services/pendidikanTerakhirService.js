@@ -39,7 +39,7 @@ class PendidikanTerakhirs {
         return pendidikanTerakhir;
     }
 
-    async updatePendidikanTerakhir(id, institusi, jurusan, tahun_mulai, tahun_selesai) {
+    async updatePendidikanTerakhir(id, id_user, institusi, jurusan, tahun_mulai, tahun_selesai) {
         const pendidikanTerakhir = await PendidikanTerakhir.findByPk(id)
         if (!pendidikanTerakhir) {
             return response.status(404).json({ message: 'Data not found' })
@@ -48,6 +48,9 @@ class PendidikanTerakhirs {
         return await PendidikanTerakhir.update(
             { institusi, jurusan, tahun_mulai, tahun_selesai },
             {
+                select: {
+                    id_user,
+                },
                 where: {
                     id,
                 },
@@ -55,16 +58,19 @@ class PendidikanTerakhirs {
         )
     }
 
-    async deletePendidikanTerakhir(id) {
+    async deletePendidikanTerakhir(id, id_user) {
         const pendidikanTerakhir = await PendidikanTerakhir.findByPk(id)
         if (!pendidikanTerakhir) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await PendidikanTerakhir.destroy({
+            select: {
+                id_user,
+            },
             where: {
                 id,
-            }
+            },
         })
 
     }

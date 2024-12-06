@@ -25,7 +25,7 @@ exports.getKeahlianId = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Get user detail success',
+            message: 'Get keahlian success',
             data,
         })
     } catch (error) {
@@ -59,6 +59,7 @@ exports.updateKeahlian = async (req, res, next) => {
         const keahlian = new Keahlians();
         await keahlian.updateKeahlian(
             req.params.id,
+            req.params.id_user,
             req.body.keahlian,
             req.body.tingkat
         );
@@ -75,7 +76,7 @@ exports.updateKeahlian = async (req, res, next) => {
 exports.deleteKeahlian = async (req, res, next) => {
     try {
         const keahlian = new Keahlians();
-        await keahlian.deleteKeahlian(req.params.id);
+        await keahlian.deleteKeahlian(req.params.id, req.params.id_user,);
 
         return res.status(200).json({
             success: true,

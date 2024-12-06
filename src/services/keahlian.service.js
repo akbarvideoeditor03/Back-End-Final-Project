@@ -28,7 +28,7 @@ class Keahlians {
         return keahlianUser;
     }
 
-    async updateKeahlian(id, keahlian, tingkat) {
+    async updateKeahlian(id, id_user, keahlian, tingkat) {
         const keahlianUser = await Keahlian.findByPk(id)
         if (!keahlianUser) {
             return response.status(404).json({ message: 'Data not found' })
@@ -37,6 +37,9 @@ class Keahlians {
         return await Keahlian.update(
             { keahlian, tingkat },
             {
+                select: {
+                    id_user,
+                },
                 where: {
                     id,
                 },
@@ -44,18 +47,20 @@ class Keahlians {
         )
     }
 
-    async deleteKeahlian(id) {
+    async deleteKeahlian(id, id_user,) {
         const keahlianUser = await Keahlian.findByPk(id)
         if (!keahlianUser) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await Keahlian.destroy({
+            select: {
+                id_user,
+            },
             where: {
                 id,
-            }
+            },
         })
-
     }
 }
 

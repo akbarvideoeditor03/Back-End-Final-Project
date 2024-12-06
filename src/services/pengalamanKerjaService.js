@@ -39,7 +39,7 @@ class PengalamanKerjas {
         return pengalamanKerja;
     }
 
-    async updatePengalamanKerja(id, pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai) {
+    async updatePengalamanKerja(id, id_user, pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai) {
         const pengalamanKerja = await PengalamanKerja.findByPk(id)
         if (!pengalamanKerja) {
             return response.status(404).json({ message: 'Data not found' })
@@ -48,6 +48,9 @@ class PengalamanKerjas {
         return await PengalamanKerja.update(
             { pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai },
             {
+                select :{
+                    id_user,
+                },
                 where: {
                     id,
                 },
@@ -55,16 +58,19 @@ class PengalamanKerjas {
         )
     }
 
-    async deletePengalamanKerja(id) {
+    async deletePengalamanKerja(id, id_user) {
         const deletePengalamanKerja = await PengalamanKerja.findByPk(id)
         if (!deletePengalamanKerja) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await PengalamanKerja.destroy({
+            select :{
+                id_user,
+            },
             where: {
                 id,
-            }
+            },
         })
 
     }

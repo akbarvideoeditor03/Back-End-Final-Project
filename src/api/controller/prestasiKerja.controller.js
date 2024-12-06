@@ -25,7 +25,7 @@ exports.getPrestasiKerjaId = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Get user detail success',
+            message: 'Get prestasi success',
             data,
         })
     } catch (error) {

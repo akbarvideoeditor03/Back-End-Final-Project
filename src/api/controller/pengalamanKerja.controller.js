@@ -29,7 +29,7 @@ exports.getPengalamanKerjaId = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            message: 'Get user detail success',
+            message: 'Get pengalaman kerja success',
             data,
         })
     } catch (error) {
@@ -62,10 +62,12 @@ exports.createPengalamanKerja = async (req, res, next) => {
 
 exports.updatePengalamanKerja = async (req, res, next) => {
     try {
-        pengalamanKerjaValidation.validateUpdatePayload(req.body)
+        pengalamanKerjaValidation.validateUpdatePayload(req.body);
+
         const pengalamanKerja = new PengalamanKerjas();
-        await pengalamanKerja.updatePengalamanKerja(
+        const result = await pengalamanKerja.updatePengalamanKerja(
             req.params.id,
+            req.params.id_user,
             req.body.pengalaman_kerja,
             req.body.jabatan,
             req.body.deskripsi,
@@ -73,19 +75,30 @@ exports.updatePengalamanKerja = async (req, res, next) => {
             req.body.tahun_selesai
         );
 
+        if (result.status === 404) {
+            return res.status(404).json({
+                success: false,
+                message: 'Data not found',
+            });
+        }
+
         return res.status(200).json({
             success: true,
             message: 'Update data successfully',
-        })
+        });
     } catch (error) {
         next(error);
     }
-}
+};
+
 
 exports.deletePengalamanKerja = async (req, res, next) => {
     try {
         const pengalamanKerja = new PengalamanKerjas();
-        await pengalamanKerja.deletePengalamanKerja(req.params.id);
+        await pengalamanKerja.deletePengalamanKerja(
+            req.params.id,
+            req.params.id_user,
+        );
 
         return res.status(200).json({
             success: true,

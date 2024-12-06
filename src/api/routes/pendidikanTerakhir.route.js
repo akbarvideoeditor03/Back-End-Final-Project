@@ -5,7 +5,7 @@ const pendidikanTerakhirRoute = require('../controller/pendidikanTerakhir.contro
 router.get('/', pendidikanTerakhirRoute.getPendidikanTerakhir);
 router.get('/:id_user', pendidikanTerakhirRoute.getPendidikanTerakhirId);
 router.post('/', pendidikanTerakhirRoute.createPendidikanTerakhir);
-router.put('/:id', pendidikanTerakhirRoute.updatePendidikanTerakhir);
-router.delete('/:id', pendidikanTerakhirRoute.deletePendidikanTerakhir);
+router.put('/:id_user/:id', pendidikanTerakhirRoute.updatePendidikanTerakhir);
+router.delete('/:id_user/:id', pendidikanTerakhirRoute.deletePendidikanTerakhir);
 
 module.exports = router;
