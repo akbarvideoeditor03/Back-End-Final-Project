@@ -6,9 +6,12 @@ const pendidikanTerakhir = require('./api/routes/pendidikanTerakhir.route');
 const pelatihan = require('./api/routes/pelatihan.route');
 const keahlian = require('./api/routes/keahlian.route');
 const authRoute = require('./api/routes/auth.route');
+const AuthMiddle = require('./middleware/authentication');
 
 router.use('/user', usersRoute);
 router.use('/user', authRoute);
+
+router.use(AuthMiddle);
 router.use('/pengalamankerja', pengalamanKerjaRoute);
 router.use('/prestasikerja', prestasiKerjaRoute);
 router.use('/pendidikanterakhir', pendidikanTerakhir);

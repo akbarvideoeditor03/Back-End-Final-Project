@@ -59,6 +59,7 @@ exports.updatePrestasiKerja = async (req, res, next) => {
         const prestasiKerja = new PrestasiKerjas();
         await prestasiKerja.updatePrestasiKerja(
             req.params.id,
+            req.params.id_pengalaman_kerja,
             req.body.prestasi,
             req.body.tahun
         );
