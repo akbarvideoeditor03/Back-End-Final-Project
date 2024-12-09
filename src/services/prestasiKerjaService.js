@@ -47,13 +47,16 @@ class PrestasiKerjas {
         )
     }
 
-    async deletePrestasiKerja(id) {
+    async deletePrestasiKerja(id, id_pengalaman_kerja) {
         const prestasiKerja = await PrestasiKerja.findByPk(id)
         if (!prestasiKerja) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await PrestasiKerja.destroy({
+            select:{
+                id_pengalaman_kerja,
+            },
             where: {
                 id,
             }
