@@ -11,10 +11,11 @@ const AuthMiddle = require('./middleware/authentication');
 router.use('/kopi/user', usersRoute);
 router.use('/kopi/user', authRoute);
 
-router.use('/kopi/pengalamankerja', AuthMiddle, pengalamanKerjaRoute);
-router.use('/kopi/prestasikerja', AuthMiddle, prestasiKerjaRoute);
-router.use('/kopi/pendidikanterakhir', AuthMiddle, pendidikanTerakhir);
-router.use('/kopi/pelatihan', AuthMiddle, pelatihan);
-router.use('/kopi/keahlian', AuthMiddle, keahlian);
+router.use(AuthMiddle);
+router.use('/kopi/pengalamankerja', pengalamanKerjaRoute);
+router.use('/kopi/prestasikerja', prestasiKerjaRoute);
+router.use('/kopi/pendidikanterakhir', pendidikanTerakhir);
+router.use('/kopi/pelatihan', pelatihan);
+router.use('/kopi/keahlian', keahlian);
 
 module.exports = router;
