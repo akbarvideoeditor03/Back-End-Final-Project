@@ -41,7 +41,7 @@ const login = async (req, res) => {
         });
     } catch (error) {
         console.error('Error during login:', error);
-        return res.status(500).json({ message: 'Terjadi kesalahan pada server.' });
+        return res.status(500).json({ message: 'Terjadi kesalahan pada server.', error });
     }
 };
 
