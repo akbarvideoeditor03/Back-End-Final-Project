@@ -8,13 +8,13 @@ const keahlian = require('./api/routes/keahlian.route');
 const authRoute = require('./api/routes/auth.route');
 const AuthMiddle = require('./middleware/authentication');
 
-router.use('/api/v1/user', usersRoute);
-router.use('/api/v1/user', authRoute);
+router.use('/kopi/user', usersRoute);
+router.use('/kopi/user', authRoute);
 
-router.use('/api/v1/pengalamankerja', AuthMiddle, pengalamanKerjaRoute);
-router.use('/api/v1/prestasikerja', AuthMiddle, prestasiKerjaRoute);
-router.use('/api/v1/pendidikanterakhir', AuthMiddle, pendidikanTerakhir);
-router.use('/api/v1/pelatihan', AuthMiddle, pelatihan);
-router.use('/api/v1/keahlian', AuthMiddle, keahlian);
+router.use('/kopi/pengalamankerja', AuthMiddle, pengalamanKerjaRoute);
+router.use('/kopi/prestasikerja', AuthMiddle, prestasiKerjaRoute);
+router.use('/kopi/pendidikanterakhir', AuthMiddle, pendidikanTerakhir);
+router.use('/kopi/pelatihan', AuthMiddle, pelatihan);
+router.use('/kopi/keahlian', AuthMiddle, keahlian);
 
 module.exports = router;
