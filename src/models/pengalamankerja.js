@@ -15,15 +15,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   PengalamanKerja.init({
     id_user: DataTypes.INTEGER,
-    pengalaman_kerja: DataTypes.STRING,
+    lokasi: DataTypes.STRING,
     jabatan: DataTypes.STRING,
-    deskripsi: DataTypes.STRING,
+    detail: DataTypes.STRING,
     tahun_mulai: DataTypes.DATE,
     tahun_selesai: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'PengalamanKerja',
-    tableName:'pengalaman_kerja'
+        tableName:'pengalaman_kerja'
   });
   return PengalamanKerja;
 };

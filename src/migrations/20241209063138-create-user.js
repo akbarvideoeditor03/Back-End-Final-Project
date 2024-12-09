@@ -2,29 +2,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('PengalamanKerjas', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_user: {
-        type: Sequelize.INTEGER
-      },
-      pengalaman_kerja: {
+      nama: {
         type: Sequelize.STRING
       },
-      jabatan: {
+      no_telp: {
         type: Sequelize.STRING
       },
-      deskripsi: {
+      alamat: {
         type: Sequelize.STRING
       },
-      tahun_mulai: {
-        type: Sequelize.DATE
+      foto_profil: {
+        type: Sequelize.STRING
       },
-      tahun_selesai: {
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      role: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -38,6 +41,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('PengalamanKerjas');
+    await queryInterface.dropTable('Users');
   }
 };

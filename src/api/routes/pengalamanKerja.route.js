@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const pengalamanKerjaRoute = require('../controller/pengalamanKerja.controller');
 
 router.get('/', pengalamanKerjaRoute.getPengalamanKerja);

@@ -1,10 +1,16 @@
 {
   "development": {
-    "username": "ahmadakbar03",
-    "password": "4k134121174HD!@",
+    "username": "final_project_owner",
+    "password": "sklU1gGK6pVP",
     "database": "final_project",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "ep-cold-mouse-a1zjeq7m.ap-southeast-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
     "username": "root",
