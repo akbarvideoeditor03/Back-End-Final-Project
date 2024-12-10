@@ -38,7 +38,7 @@ exports.createPrestasiKerja = async (req, res, next) => {
         prestasiKerjaValidation.validateCreatePayload(req.body)
         const prestasiKerja = new PrestasiKerjas();
         const data = await prestasiKerja.createPrestasiKerja(
-            req.body.id_lokasi,
+            req.body.id_pengalaman_kerja,
             req.body.prestasi,
             req.body.tahun,
         );

@@ -63,7 +63,6 @@ exports.createPengalamanKerja = async (req, res, next) => {
 exports.updatePengalamanKerja = async (req, res, next) => {
     try {
         pengalamanKerjaValidation.validateUpdatePayload(req.body);
-
         const pengalamanKerja = new PengalamanKerjas();
         const result = await pengalamanKerja.updatePengalamanKerja(
             req.params.id,

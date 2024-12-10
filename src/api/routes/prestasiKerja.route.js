@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const prestasiKerjaRoute = require('../controller/prestasiKerja.controller');
 
 router.get('/', prestasiKerjaRoute.getPrestasiKerja);
