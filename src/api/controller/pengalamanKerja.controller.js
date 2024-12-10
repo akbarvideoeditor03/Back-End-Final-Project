@@ -45,7 +45,7 @@ exports.createPengalamanKerja = async (req, res, next) => {
             req.body.id_user,
             req.body.pengalaman_kerja,
             req.body.jabatan,
-            req.body.deskripsi,
+            req.body.detail,
             req.body.tahun_mulai,
             req.body.tahun_selesai
         );
@@ -70,7 +70,7 @@ exports.updatePengalamanKerja = async (req, res, next) => {
             req.params.id_user,
             req.body.pengalaman_kerja,
             req.body.jabatan,
-            req.body.deskripsi,
+            req.body.detail,
             req.body.tahun_mulai,
             req.body.tahun_selesai
         );

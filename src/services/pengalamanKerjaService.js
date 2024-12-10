@@ -34,19 +34,19 @@ class PengalamanKerjas {
         return { data: pengalamanKerjaId }
     }
 
-    async createPengalamanKerja(id_user, pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai) {
-        const pengalamanKerja = await PengalamanKerja.create({ id_user, pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai });
+    async createPengalamanKerja(id_user, pengalaman_kerja, jabatan, detail, tahun_mulai, tahun_selesai) {
+        const pengalamanKerja = await PengalamanKerja.create({ id_user, pengalaman_kerja, jabatan, detail, tahun_mulai, tahun_selesai });
         return pengalamanKerja;
     }
 
-    async updatePengalamanKerja(id, id_user, pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai) {
+    async updatePengalamanKerja(id, id_user, pengalaman_kerja, jabatan, detail, tahun_mulai, tahun_selesai) {
         const pengalamanKerja = await PengalamanKerja.findByPk(id)
         if (!pengalamanKerja) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await PengalamanKerja.update(
-            { pengalaman_kerja, jabatan, deskripsi, tahun_mulai, tahun_selesai },
+            { pengalaman_kerja, jabatan, detail, tahun_mulai, tahun_selesai },
             {
                 select :{
                     id_user,
