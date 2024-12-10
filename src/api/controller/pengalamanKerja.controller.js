@@ -43,7 +43,7 @@ exports.createPengalamanKerja = async (req, res, next) => {
         const pengalamanKerja = new PengalamanKerjas();
         const data = await pengalamanKerja.createPengalamanKerja(
             req.body.id_user,
-            req.body.pengalaman_kerja,
+            req.body.lokasi,
             req.body.jabatan,
             req.body.detail,
             req.body.tahun_mulai,
@@ -68,7 +68,7 @@ exports.updatePengalamanKerja = async (req, res, next) => {
         const result = await pengalamanKerja.updatePengalamanKerja(
             req.params.id,
             req.params.id_user,
-            req.body.pengalaman_kerja,
+            req.body.lokasi,
             req.body.jabatan,
             req.body.detail,
             req.body.tahun_mulai,

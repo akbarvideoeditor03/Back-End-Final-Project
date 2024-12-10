@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 exports.create = Joi.object().keys({
-    id_pengalaman_kerja: Joi.number().required(),
+    id_lokasi: Joi.number().required(),
     prestasi: Joi.string().required(),
     tahun: Joi.date().required(),
 })
