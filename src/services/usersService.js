@@ -1,6 +1,5 @@
 const { User } = require('../models');
 const { response } = require('express');
-const bcrypt = require('bcrypt');
 const { encrypt } = require('../utils/password.util');
 
 
@@ -35,7 +34,7 @@ class UserService {
     }
 
     async createUsers(nama, no_telp, alamat, tentang, foto_profil, email, password) {
-        const hashedPassword = bcrypt.hash(password, encrypt);
+        const hashedPassword = await encrypt(password);
 
         const users = await User.create({nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword})
         return users

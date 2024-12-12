@@ -54,7 +54,14 @@ exports.createUsers = async (req, res, next) => {
         return res.status(201).json({
             success: true,
             message: 'Create data success',
-            data,
+            data : {
+                id : data.id,
+                nama : data.nama,
+                no_telp : data.no_telp,
+                alamat : data.alamat,
+                tentang: data.tentang,
+                email: data.email,
+            },
         })
     } catch (error) {
         next(error);
