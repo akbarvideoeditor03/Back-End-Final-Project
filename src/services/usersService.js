@@ -2,8 +2,6 @@ const { User } = require('../models');
 const { response } = require('express');
 const { encrypt } = require('../utils/password.util');
 
-
-
 class UserService {
     async getUsers({ page, limit } = { page: 1, limit: 10 }) {
         const queryParams = {
