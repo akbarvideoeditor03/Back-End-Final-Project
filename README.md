@@ -1,6 +1,6 @@
 # Aplikasi Server KOPI (Karajo Pintar) - CV Maker
 
-Selamat datang di **Aplikasi Server KOPI (Karajo Pintar) - CV Maker**, proyek akhir dari **CAMP Celerates 2024**. Aplikasi ini dirancang untuk mempermudah siapa saja dalam membuat CV dengan cepat, sederhana, dan efisien. Menggunakan **PostgreSQL** sebagai basis data dan **Sequelize** sebagai ORM (Object Relational Mapping), aplikasi ini menawarkan solusi modern untuk kebutuhan pembuatan CV profesional.
+Selamat datang di **Aplikasi Server KOPI (Karajo Pintar) - CV Maker**, proyek akhir dari **CAMP Celerates 2024**. Aplikasi ini dirancang untuk mempermudah siapa saja dalam membuat CV dengan cepat, sederhana, dan efisien. Menggunakan **PostgreSQL** sebagai basis data, dan **Sequelize** sebagai ORM (Object Relational Mapping), aplikasi ini menawarkan solusi cepat untuk kebutuhan pembuatan CV.
 
 ---
 
@@ -9,9 +9,8 @@ Selamat datang di **Aplikasi Server KOPI (Karajo Pintar) - CV Maker**, proyek ak
 Aplikasi Server KOPI - CV Maker menyediakan **API RESTful** yang memungkinkan pengguna untuk:
 - Mengelola data akun.
 - Menyimpan informasi pendidikan, pengalaman kerja, prestasi, keahlian, dan pelatihan.
-- Mengunduh atau mencetak CV langsung dari aplikasi.
 
-Proses pembuatan CV didesain agar sederhana, tanpa memerlukan registrasi panjang yang menyulitkan. Dengan Aplikasi KOPI, pembuatan CV jadi lebih cepat dan efisien.
+Proses pembuatan CV didesain agar sederhana, tanpa memerlukan registrasi panjang dan lama. Dengan Aplikasi KOPI, pembuatan CV jadi lebih cepat dan efisien.
 
 ---
 
@@ -22,7 +21,7 @@ Ikuti langkah-langkah berikut untuk menyiapkan dan menjalankan aplikasi:
 ### Prasyarat
 
 1. **Node.js**: Pastikan Node.js telah terinstal di perangkat Anda.
-2. **PostgreSQL**: Untuk menyimpan data secara lokal, instal dan jalankan PostgreSQL (misalnya, menggunakan aplikasi seperti DBeaver). Alternatifnya, gunakan platform database cloud seperti **Neon**.
+2. **PostgreSQL**: Untuk menyimpan data secara lokal, instal dan jalankan PostgreSQL (misalnya, menggunakan aplikasi seperti [**DBeaver**](https://dbeaver.io/)). Alternatifnya, gunakan platform database cloud seperti [**Neon**](https://console.neon.tech).
 
 ### Instalasi
 
@@ -50,7 +49,7 @@ Ikuti langkah-langkah berikut untuk menyiapkan dan menjalankan aplikasi:
 
 ## Dokumentasi API
 
-Untuk informasi lengkap tentang API, termasuk panduan penggunaan dan contoh endpoint, silakan kunjungi **Dokumentasi API**.
+Untuk informasi lengkap tentang API, termasuk panduan penggunaan dan contoh endpoint, silakan kunjungi [**Dokumentasi API**](https://documenter.getpostman.com/view/39839610/2sAYHxnPQj).
 
 ---
 
@@ -76,7 +75,3 @@ Untuk informasi lengkap tentang API, termasuk panduan penggunaan dan contoh endp
 - **Sequelize**: ORM untuk Node.js.
 - **DBeaver**: Aplikasi pengelola database lokal.
 - **Neon**: Platform database berbasis cloud.
-
----
-
-Aplikasi ini adalah langkah kecil menuju karir besar Anda. Selamat mencoba, dan semoga sukses dalam perjalanan karir Anda!
