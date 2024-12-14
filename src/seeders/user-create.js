@@ -7,10 +7,10 @@ module.exports = {
         await queryInterface.bulkInsert("user", [
             {
                 nama: 'John Doe',
-                no_telp: '081234567890',
-                alamat: 'Jl. Merpati No. 5',
-                tentang: 'Pengguna aktif aplikasi.',
-                foto_profil: 'profile1.jpg',
+                no_telp: '081122334455',
+                alamat: 'nama jalan, nama desa/kelurahan, nama kabupaten/kota',
+                tentang: 'tuliskan tentang kamu',
+                foto_profil: 'unggah file foto profil kamu',
                 email: 'johndoe@example.com',
                 password: await passwordConfig.encrypt('12345678'),
                 createdAt: new Date(),
