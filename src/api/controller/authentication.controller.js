@@ -5,6 +5,16 @@ const passwordUtil = require('../../utils/password.util');
 const tokenUtils = require('../../utils/token.util');
 
 const register = async (req, res) => {
+    const exitingUser = await User.findOne({
+        where: {email : req.body.email },
+    });
+    
+    if (exitingUser) {
+        return res.status(400).json({
+            message: 'Email sudah terdaftar, silakan gunakan email lain.',
+        });
+    }
+
     await User.create({
         nama: req.body.nama,
         no_telp: req.body.no_telp,
