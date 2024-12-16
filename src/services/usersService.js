@@ -21,7 +21,7 @@ class UserService {
 
     async getUsersById(id) {
         const queryParams = {
-            attributes: { exclude: ['role'] }
+            attributes: { exclude: ['password', 'role'] }
         }
         const usersId = await User.findByPk(id, queryParams)
 
