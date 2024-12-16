@@ -108,14 +108,11 @@ const resetPassword = async (req, res) => {
     if(!user) {
         return res.status(401).json({ message: 'Pengguna tidak ditemukan atau belum terdaftar.' });
     }
-    
-    console.log(otp);
+
     if (user.otp !== otp) {
         return res.status(401).json({ message: `Kode OTP salah, ${user.otp}, ${otp}` });
     }    
-
-    console.log('expCode:', user.expCode);
-    console.log('current time:', new Date());
+    
     if (new Date() > user.expCode) {
         return res.status(401).json({ message: 'Kode OTP sudah kadaluarsa.' });
     }
