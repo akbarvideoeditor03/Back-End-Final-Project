@@ -33,19 +33,17 @@ class UserService {
 
     async createUsers(nama, no_telp, alamat, tentang, foto_profil, email, password) {
         const hashedPassword = await encrypt(password);
-
         const users = await User.create({nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword})
         return users
     }
 
-    async updateUsers(id, nama, no_telp, alamat, tentang, foto_profil, email, password){
-        const hashedPassword = await encrypt(password);
+    async updateUsers(id, nama, no_telp, alamat, tentang, foto_profil, email){
         const usersId = await User.findByPk(id);
         if (!usersId) {
             return response.status(404).json({ message: 'Data tidak ditemukan' })
         }
         return await User.update(
-            {nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword},
+            {nama, no_telp, alamat, tentang, foto_profil, email},
             {
                 where: {
                     id,
