@@ -20,6 +20,8 @@ const mailOtp = async (email, otp) => {
         text: `${otp} adalah nomor kode otp kamu. Buruan dipakai, validnya cuma 5 menit loh...`,
     };
 
+    console.log(mailOptions);
+
     try {
         await transporter.sendMail(mailOptions);
         console.log(`OTP sudah dikirimkan ke ${email}: ${otp}`);
