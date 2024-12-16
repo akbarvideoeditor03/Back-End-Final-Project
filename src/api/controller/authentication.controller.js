@@ -61,7 +61,7 @@ const askResetPassword = async (req, res) => {
     if(!email) {
         return res.status(400).json({message: `Email dibutuhkan.`})
     }
-    const user = await User.findOne({where : {email}});
+    const user = await User.findOne({where : {email: req.body.email}});
     if(!user) {
         return res.status(404).json({message: `Pengguna tidak ditemukan.`})
     }
@@ -104,7 +104,7 @@ const resetPassword = async (req, res) => {
         })
     }
 
-    const user = await User.findOne({where: {email}});
+    const user = await User.findOne({where: {email: req.body.email}});
     if(!user) {
         return res.status(401).json({ message: 'Pengguna tidak ditemukan atau belum terdaftar.' });
     }
