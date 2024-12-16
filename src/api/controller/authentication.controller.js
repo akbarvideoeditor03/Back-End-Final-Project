@@ -3,6 +3,7 @@ const db = require('../../models');
 const User = db.User;
 const passwordUtil = require('../../utils/password.util');
 const tokenUtils = require('../../utils/token.util');
+const otpUtils = require('../../utils/otp.util');
 
 const register = async (req, res) => {
     const exitingUser = await User.findOne({
@@ -55,4 +56,78 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { register, login };
+const askResetPassword = async (req, res) => {
+    const { email } = req.body;
+    if(!email) {
+        return res.status(400).json({message: `Email dibutuhkan.`})
+    }
+    const user = await User.findOne({where : {email}});
+    if(!user) {
+        return res.status(404).json({message: `Pengguna tidak ditemukan.`})
+    }
+    const OTP = otpUtils.otpCode();
+    const expCode = new Date();
+    expCode.setMinutes(expCode.getMinutes() + 5);
+
+    user.otp = OTP;
+    user.expCode = expCode;
+    await user.save();
+
+    try {
+        await otpUtils.mailOtp(email, OTP);
+        return res.status(200).json({
+            message: `Password reset OTP sudah dikirim.`,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: `OTP password reset gagal dikirimkan `,
+        })
+    }
+}
+
+const resetPassword = async (req, res) => {
+    const { email, otp, newPassword } = req.body;
+
+    if(!email) {
+        return res.status(400).json({
+            message: `Email diperlukan.`
+        })
+    }
+    if(!otp) {
+        return res.status(400).json({
+            message: `OTP diperlukan.`
+        })
+    }
+    if(!newPassword) {
+        return res.status(400).json({
+            message: `Password baru diperlukan.`
+        })
+    }
+
+    const user = await User.findOne({where: {email}});
+    if(!user) {
+        return res.status(401).json({ message: 'Pengguna tidak ditemukan atau belum terdaftar.' });
+    }
+    
+    console.log(otp);
+    if (user.otp !== otp) {
+        return res.status(401).json({ message: `Kode OTP salah, ${user.otp}, ${otp}` });
+    }    
+
+    console.log('expCode:', user.expCode);
+    console.log('current time:', new Date());
+    if (new Date() > user.expCode) {
+        return res.status(401).json({ message: 'Kode OTP sudah kadaluarsa.' });
+    }
+
+    user.password = await passwordUtil.encrypt(req.body.newPassword);
+    user.otp = null;
+    user.expCode = null;
+    await user.save();
+
+    return res.status(200).json({
+        message: 'Password berhasil direset'
+    });
+}
+
+module.exports = { register, login, askResetPassword, resetPassword };

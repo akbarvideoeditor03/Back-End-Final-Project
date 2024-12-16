@@ -18,6 +18,9 @@ module.exports = {
       alamat: {
         type: Sequelize.STRING
       },
+      tentang: {
+        type: Sequelize.STRING
+      },
       foto_profil: {
         type: Sequelize.STRING
       },
@@ -26,6 +29,12 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
+      },
+      otp: {
+        type: Sequelize.STRING
+      },
+      expCode: {
+        type: Sequelize.DATE
       },
       role: {
         type: Sequelize.STRING
