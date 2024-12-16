@@ -17,4 +17,5 @@ exports.update = Joi.object().keys({
     tentang: Joi.string(),
     foto_profil: Joi.string(),
     email: Joi.string(),
+    password: Joi.string()
 })

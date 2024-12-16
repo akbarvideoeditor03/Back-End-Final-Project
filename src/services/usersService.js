@@ -21,7 +21,7 @@ class UserService {
 
     async getUsersById(id) {
         const queryParams = {
-            attributes: { exclude: ['password', 'role'] }
+            attributes: { exclude: ['role'] }
         }
         const usersId = await User.findByPk(id, queryParams)
 
@@ -38,13 +38,14 @@ class UserService {
         return users
     }
 
-    async updateUsers(id, nama, no_telp, alamat, tentang, foto_profil, email){
-        const usersId = await User.findByPk(id)
+    async updateUsers(id, nama, no_telp, alamat, tentang, foto_profil, email, password){
+        const hashedPassword = await encrypt(password);
+        const usersId = await User.findByPk(id);
         if (!usersId) {
             return response.status(404).json({ message: 'Data tidak ditemukan' })
         }
         return await User.update(
-            {nama, no_telp, alamat, tentang, foto_profil, email},
+            {nama, no_telp, alamat, tentang, foto_profil, email, password: hashedPassword},
             {
                 where: {
                     id,
