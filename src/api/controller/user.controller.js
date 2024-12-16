@@ -80,7 +80,6 @@ exports.updateUsers = async (req, res, next) => {
             req.body.tentang,
             req.body.foto_profil,
             req.body.email,
-            req.body.password,
         );
 
         return res.status(200).json({
