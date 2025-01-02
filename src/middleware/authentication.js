@@ -11,7 +11,6 @@ const authentication = (req, res, next) => {
         if(error){
             return res.status(401).json({message: 'Authentication Failed : Invalid Token'})
         }
-
         next()
     });
 

@@ -4,6 +4,8 @@ const User = db.User;
 const passwordUtil = require('../../utils/password.util');
 const tokenUtils = require('../../utils/token.util');
 const otpUtils = require('../../utils/otp.util');
+const gClient = require('../../config/gAuth');
+require("dotenv").config()
 
 const register = async (req, res) => {
     const exitingUser = await User.findOne({
@@ -55,6 +57,48 @@ const login = async (req, res) => {
         return res.status(500).json({ message: `Terjadi kesalahan pada server. ${error}` });
     }
 };
+
+const gLogin = async (req, res) => {
+    try {
+        const { token } = req.body;
+        const ticket = await gClient.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+
+        const { email, name, picture } = ticket.getPayload();
+        let user = await User.findOne({ where: { email }});
+
+        if(!user) {
+            user = await User.create({
+                nama: name,
+                no_telp: 'Belum disetel',
+                alamat: 'Belum disetel',
+                tentang: 'Belum disetel',
+                foto_profil: picture,
+                email,
+                role: "user",
+                password: await passwordUtil.encrypt('12345678'),
+            });
+        } else {
+            return res.status(400).json({
+                message: 'Email sudah terdaftar, silakan gunakan email lain.',
+            });
+        }
+
+        const tokenEncode = await tokenUtils.encode(user);
+        return res.json({
+            id: user.id,
+            role: user.role,
+            token: tokenEncode.token,
+        });
+    } catch (error) {
+        console.error("Google login error: ", error);
+        res.status(500).json({
+            message: "Terjadi kesalahaan"
+        })
+    }
+}
 
 const askResetPassword = async (req, res) => {
     const { email } = req.body;
@@ -127,4 +171,4 @@ const resetPassword = async (req, res) => {
     });
 }
 
-module.exports = { register, login, askResetPassword, resetPassword };
+module.exports = { register, login, gLogin, askResetPassword, resetPassword };
