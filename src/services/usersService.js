@@ -9,10 +9,7 @@ class UserService {
         }
 
         const countUsers = await User.count()
-        const users = await User.findAll({
-            ...queryParams,
-            order: [['id', 'ACS']]
-        });
+        const users = await User.findAll(queryParams);
 
         return {
             data: users,
