@@ -20,7 +20,7 @@ exports.getTemplat = async (req, res, next) => {
 exports.getTemplatId = async (req, res, next) => {
     try {
         const templatCV = new Templats();
-        const { id_user } = req.params;
+        const { id } = req.params;
         const { data } = await templatCV.getTemplatId(parseInt(id));
 
         return res.status(200).json({
