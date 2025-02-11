@@ -44,8 +44,12 @@ exports.createTemplat = async (req, res, next) => {
 
         return res.status(201).json({
             success: true,
-            message: 'Create data success',
-            data,
+            message: 'Create templat preview success',
+            data : {
+                id : data.id,
+                link_gambar : data.link_gambar,
+                caption : data.caption,
+            },
         })
     } catch (error) {
         next(error);

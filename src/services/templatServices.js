@@ -23,8 +23,8 @@ class Templats {
         return { data: templatId }
     }
 
-    async createTemplat(id, link_gambar, caption) {
-        const templatCV = await Templat.create({ id, link_gambar, caption });
+    async createTemplat( link_gambar, caption) {
+        const templatCV = await Templat.create({ link_gambar, caption });
         return templatCV;
     }
 
