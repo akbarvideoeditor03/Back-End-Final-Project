@@ -4,7 +4,7 @@ const templatValidation = require('../../validations/templat');
 exports.getTemplat = async (req, res, next) => {
     try {
         const templatCV = new Templats();
-        const { data, meta } = await templatCV.getTemplatId()
+        const { data, meta } = await templatCV.getTemplat()
 
         return res.status(200).json({
             success: true,
