@@ -19,7 +19,7 @@ exports.getTemplat = async (req, res, next) => {
 
 exports.getTemplatId = async (req, res, next) => {
     try {
-        const templatCV = new PengalamanKerjas();
+        const templatCV = new Templats();
         const { id_user } = req.params;
         const { data } = await templatCV.getTemplatId(parseInt(id));
 
@@ -36,7 +36,7 @@ exports.getTemplatId = async (req, res, next) => {
 exports.createTemplat = async (req, res, next) => {
     try {
         templatValidation.validateCreatePayload(req.body)
-        const templatCV = new PengalamanKerjas();
+        const templatCV = new Templats();
         const data = await templatCV.createTemplat(
             req.body.link_gambar,
             req.body.caption,
@@ -54,9 +54,9 @@ exports.createTemplat = async (req, res, next) => {
 
 exports.updateTemplat = async (req, res, next) => {
     try {
-        pengalamanKerjaValidation.validateUpdatePayload(req.body);
+        templatValidation.validateUpdatePayload(req.body);
         const templatCV = new Templats();
-        const result = await templatCV.updatePengalamanKerja(
+        const result = await templatCV.updateTemplat(
             req.params.id,
             req.body.link_gambar,
             req.body.caption,
