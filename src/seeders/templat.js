@@ -7,6 +7,7 @@ module.exports = {
                 id: 1,
                 link_gambar: 'link',
                 caption: 'gambar contoh',
+                link_page: 'link',
                 createdAt: new Date(),
                 updatedAt: new Date()
             }

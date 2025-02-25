@@ -40,6 +40,7 @@ exports.createTemplat = async (req, res, next) => {
         const data = await templatCV.createTemplat(
             req.body.link_gambar,
             req.body.caption,
+            req.body.link_page,
         );
 
         return res.status(201).json({
@@ -49,6 +50,7 @@ exports.createTemplat = async (req, res, next) => {
                 id : data.id,
                 link_gambar : data.link_gambar,
                 caption : data.caption,
+                link_page : data.link_page
             },
         })
     } catch (error) {
@@ -64,6 +66,7 @@ exports.updateTemplat = async (req, res, next) => {
             req.params.id,
             req.body.link_gambar,
             req.body.caption,
+            req.body.link_page,
         );
 
         if (result.status === 404) {

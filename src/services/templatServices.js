@@ -24,18 +24,18 @@ class Templats {
     }
 
     async createTemplat( link_gambar, caption) {
-        const templatCV = await Templat.create({ link_gambar, caption });
+        const templatCV = await Templat.create({ link_gambar, caption, link_page });
         return templatCV;
     }
 
-    async updateTemplat(id, link_gambar, caption) {
+    async updateTemplat(id, link_gambar, caption, link_page) {
         const templatCV = await Templat.findByPk(id)
         if (!templatCV) {
             return response.status(404).json({ message: 'Data not found' })
         }
 
         return await Templat.update(
-            { link_gambar, caption },
+            { link_gambar, caption, link_page },
             {
                 where: {
                     id,

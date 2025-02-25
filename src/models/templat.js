@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Templat.init({
     link_gambar: DataTypes.STRING,
-    caption: DataTypes.STRING
+    caption: DataTypes.STRING,
+    link_page: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Templat',
