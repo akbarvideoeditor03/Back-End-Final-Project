@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     password: DataTypes.STRING,
+    google: DataTypes.BOOLEAN,
     otp: DataTypes.STRING,
     expCode: DataTypes.DATE,
     role: DataTypes.STRING

@@ -79,6 +79,7 @@ const gLogin = async (req, res) => {
                 email,
                 role: "user",
                 password: await passwordUtil.encrypt('12345678'),
+                google: true,
             });
         } else {
             return res.status(400).json({
@@ -164,6 +165,7 @@ const resetPassword = async (req, res) => {
     user.password = await passwordUtil.encrypt(req.body.newPassword);
     user.otp = null;
     user.expCode = null;
+    user.google = false;
     await user.save();
 
     return res.status(200).json({
